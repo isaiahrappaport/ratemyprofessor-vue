@@ -1,11 +1,11 @@
 <template>
   <div class="professors-show">
-    <h1>{{ professor[0].name }}</h1>
-    <h3>University: {{ professor[0].university }}</h3>
-    <h3>Department: {{ professor[0].department }}</h3>
+    <h1>{{ professor.name }}</h1>
+    <h3>University: {{ professor.university }}</h3>
+    <h3>Department: {{ professor.department }}</h3>
 
     <h3>Reviews</h3>
-    <div v-for="review in professor[0].reviews">
+    <div v-for="review in professor.reviews">
       <h3>{{ review.title }}</h3>
       <p>Course Code: {{ review.course_code }}</p>
       <p>Review: {{ review.review }}</p>
@@ -26,12 +26,12 @@
 import axios from "axios";
 import moment from "moment";
 export default {
-  data: function() {
+  data: function () {
     return {
       professor: {},
     };
   },
-  created: function() {
+  created: function () {
     console.log(this.$route.params.id);
     axios.get(`/professors/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
@@ -39,7 +39,7 @@ export default {
     });
   },
   methods: {
-    formatDate: function(date) {
+    formatDate: function (date) {
       return moment(date).format("LLL");
     },
   },

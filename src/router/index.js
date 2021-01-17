@@ -16,6 +16,8 @@ const routes = [
     path: "/professors",
     name: "professors-index",
     component: ProfessorsIndex,
+  },
+  {
     path: "/professors/:id",
     name: "professors-show",
     component: ProfessorsShow,
